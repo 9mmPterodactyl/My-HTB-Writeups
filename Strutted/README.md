@@ -24,7 +24,9 @@ While reviewing other source code from our download, we see that this applicatio
 
 **CVE-2023-50164** is a path traversal vulnerability in Apache Struts 2 (versions 2.0.0 \- 2.3.37, 2.5.0 \- 2.5.32, and 6.0.0 \- 6.3.0) that allows attackers to manipulate file upload paths. When file upload functionality is enabled, attackers can bypass path restrictions by manipulating the `uploadFileName` parameter to write files outside the intended upload directory.
 
-First, I identified the Struts configuration by examining accessible files:![](Images/struts_xml.png)
+First, I identified the Struts configuration by examining accessible files:
+
+![](Images/struts_xml.png)
 
 The application only accepts image file extensions, but doesn't validate actual file content.
 
@@ -60,7 +62,10 @@ Combining these findings, we are able to authenticate to the ssh tunnel as the â
 
 ### **Root Escalation:**
 
-First thing I usually do after getting a shell is checking sudo permissions with sudo \-l:![](Images/sudo_-l.png)  
+First thing I usually do after getting a shell is checking sudo permissions with sudo \-l:
+
+![](Images/sudo_-l.png)  
+
 The output revealed that user james could execute /usr/sbin/tcpdump with sudo privileges without requiring a password.
 
 ### **Understanding the Vulnerability**
